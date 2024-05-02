@@ -13,6 +13,7 @@ import android.app.Notification;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
@@ -72,7 +73,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String content = Objects.requireNonNull(binding.inputContent).getText().toString();
                 simplenoti(content);
-                Toast.makeText(MainActivity.this, "已发送", Toast.LENGTH_SHORT).show();
+                Toast t = Toast.makeText(MainActivity.this, "已发送", Toast.LENGTH_SHORT);
+                t.setGravity(Gravity.CENTER, 0, 0);
+                t.show();
+            }
+        });
+
+        binding.btnClear.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                binding.inputContent.setText("");
             }
         });
 
@@ -115,8 +125,8 @@ public class MainActivity extends AppCompatActivity {
         Notification noti = new NotificationCompat.Builder(getApplicationContext(), idNormal).setSmallIcon(R.drawable.ic_announcement_black_24dp)
                 //.setLargeIcon(BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher))
                 .setWhen(System.currentTimeMillis())  //When the event occurred, now, since noti are stored by time.
-                .setContentTitle(content)   //Title message top row.
-                //.setContentText(content)  //message when looking at the notification, second row
+                .setContentTitle("自定义消息")   //Title message top row.
+                .setContentText(content)  //message when looking at the notification, second row
                 .setAutoCancel(true)   //allow auto cancel when pressed.
                 .setChannelId(idNormal).build();  //finally build and return a Notification.
 

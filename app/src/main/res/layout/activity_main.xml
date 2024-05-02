@@ -18,10 +18,27 @@
         android:gravity="start|top"
         android:inputType="textMultiLine" />
 
-    <Button
-        android:id="@+id/btn_icon_marquee"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="发送通知消息" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_icon_marquee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发送通知消息" />
+
+        <Space
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="109dp"
+            android:layout_height="wrap_content"
+            android:text="清空" />
+    </LinearLayout>
 
 </LinearLayout>
